@@ -31,3 +31,6 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+# signing Configs
+signing.properties

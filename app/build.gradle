@@ -1,8 +1,21 @@
 apply plugin: 'com.android.application'
 
+// signing.properties must exist
+Properties properties = new Properties();
+properties.load(new FileInputStream(file("signing.properties")));
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
+
+    signingConfigs {
+        release {
+            keyAlias properties['KEY_ALIAS']
+            keyPassword properties['KEY_PASSWORD']
+            storeFile file(properties['KEYSTORE_FILE'])
+            storePassword properties['KEYSTORE_PASSWORD']
+        }
+    }
 
     defaultConfig {
         applicationId "com.ryeeeeee.gitx"
@@ -15,9 +28,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            signingConfig signingConfigs.release
         }
     }
 
+    // enable data binding
     dataBinding {
         enabled = true
     }
@@ -34,5 +53,4 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
 
     compile 'com.squareup.okhttp:okhttp:2.6.0'
-
 }
