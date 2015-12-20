@@ -14,13 +14,13 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx;
+package com.ryeeeeee.gitx.ui.base;
+
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Ryeeeeee on 12/19/15.
  */
-public class Config {
-    public static final String CLIENT_ID = BuildConfig.CLIENT_ID;
-    public static final String CLIENT_SECRET = BuildConfig.CLIENT_SECRET;
-    public static final String REDIRECT_URL = BuildConfig.REDIRECT_URL;
+public class BaseActivity extends AppCompatActivity {
+
 }

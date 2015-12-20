@@ -16,20 +16,29 @@
 
 package com.ryeeeeee.gitx.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.ryeeeeee.gitx.App;
 import com.ryeeeeee.gitx.R;
 import com.ryeeeeee.gitx.databinding.MainActivityBinding;
+import com.ryeeeeee.gitx.oauth.OAuth;
+import com.ryeeeeee.gitx.oauth.OAuthActivity;
+import com.ryeeeeee.gitx.ui.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final int OAUTH_REQUEST_CODE = 1;
 
     private MainActivityBinding mBinding;
 
@@ -48,6 +57,10 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         mBinding.navView.setNavigationItemSelectedListener(this);
+
+        if (!OAuth.checkLocalAccessToken(this)) {
+            startActivityForResult(new Intent(this, OAuthActivity.class), OAUTH_REQUEST_CODE);
+        }
     }
 
     @Override
@@ -103,5 +116,19 @@ public class MainActivity extends AppCompatActivity
 
         mBinding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case OAUTH_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+                    Toast.makeText(App.getContext(), "OAuth success", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(App.getContext(), "OAuth Failed", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

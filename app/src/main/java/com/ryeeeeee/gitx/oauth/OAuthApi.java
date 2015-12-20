@@ -14,13 +14,23 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx;
+package com.ryeeeeee.gitx.oauth;
+
+import retrofit.Call;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
+import retrofit.http.Headers;
+import retrofit.http.POST;
 
 /**
  * Created by Ryeeeeee on 12/19/15.
  */
-public class Config {
-    public static final String CLIENT_ID = BuildConfig.CLIENT_ID;
-    public static final String CLIENT_SECRET = BuildConfig.CLIENT_SECRET;
-    public static final String REDIRECT_URL = BuildConfig.REDIRECT_URL;
+public interface OAuthApi {
+    @Headers("Accept: application/json")
+    @FormUrlEncoded
+    @POST("/login/oauth/access_token")
+    Call<Token> exchangeAccessToken(@Field("client_id") String clientId,
+                             @Field("client_secret") String clientSecret,
+                             @Field("code") String code,
+                             @Field("accept") String accept);
 }

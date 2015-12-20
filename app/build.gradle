@@ -1,4 +1,19 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.2.4'
+    }
+}
+
+// Required because retrolambda is on maven central
+repositories {
+    mavenCentral()
+}
 
 // signing.properties must exist
 Properties properties = new Properties();
@@ -6,7 +21,7 @@ properties.load(new FileInputStream(file("signing.properties")));
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '23.0.2'
 
     signingConfigs {
         release {
@@ -22,8 +37,12 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "0.1"
+        buildConfigField "String", "CLIENT_ID", properties['CLIENT_ID']
+        buildConfigField "String", "CLIENT_SECRET", properties['CLIENT_SECRET']
+        buildConfigField "String", "REDIRECT_URL", properties['REDIRECT_URL']
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -40,6 +59,11 @@ android {
     dataBinding {
         enabled = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -52,5 +76,11 @@ dependencies {
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'io.reactivex:rxandroid:1.0.1'
 
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+
+    compile 'com.google.code.gson:gson:2.5'
+
 }
