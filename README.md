@@ -3,9 +3,16 @@
 GitX is a developing third party GitHub application for Android.
 
 ## Todo
+
 - OAuth2.0
-- get user info
-- query user's repos
+- User info
+- User's repos
+- Activities
+- Explore
+- Rate app
+- Open source link
+- File browsing
+- About
 
 ## License
 ```
