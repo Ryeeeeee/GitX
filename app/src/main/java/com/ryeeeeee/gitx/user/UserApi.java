@@ -14,26 +14,28 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.oauth;
+package com.ryeeeeee.gitx.user;
 
-import retrofit.Call;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
+import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.Headers;
-import retrofit.http.POST;
+import retrofit.http.Path;
+import rx.Observable;
 
 /**
- * Created by Ryeeeeee on 12/19/15.
+ * https://developer.github.com/v3/users/
+ *
+ * Created by Ryeeeeee on 12/23/15.
  */
-public interface OAuthApi {
-
-    public static final String BASE_URL = "https://github.com";
+public interface UserApi {
 
     @Headers("Accept: application/json")
-    @FormUrlEncoded
-    @POST("/login/oauth/access_token")
-    Call<Token> exchangeAccessToken(@Field("client_id") String clientId,
-                             @Field("client_secret") String clientSecret,
-                             @Field("code") String code,
-                             @Field("accept") String accept);
+    @GET("/user")
+    Observable<User> getAuthedUser(@Header("Authorization") String token);
+
+    @Headers("Accept: application/json")
+    @GET("/users/{username}")
+    Observable<User> getSingleUser(@Header("Authorization") String token,
+                                   @Path("username") String username);
+
 }

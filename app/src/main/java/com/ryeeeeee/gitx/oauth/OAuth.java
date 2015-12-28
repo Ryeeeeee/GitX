@@ -44,7 +44,7 @@ public class OAuth {
 
     public static Token exchangeToken(String code) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://github.com")
+                .baseUrl(OAuthApi.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         OAuthApi api = retrofit.create(OAuthApi.class);
