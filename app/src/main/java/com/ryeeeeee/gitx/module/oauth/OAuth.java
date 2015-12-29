@@ -14,11 +14,10 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.oauth;
+package com.ryeeeeee.gitx.module.oauth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.util.Log;
 

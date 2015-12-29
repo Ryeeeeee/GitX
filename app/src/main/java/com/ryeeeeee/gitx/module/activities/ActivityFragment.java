@@ -14,9 +14,10 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.main;
+package com.ryeeeeee.gitx.module.activities;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ryeeeeee.gitx.R;
+import com.ryeeeeee.gitx.databinding.ActivitiesBinding;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +49,8 @@ public class ActivityFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private ActivitiesBinding mBinding;
 
     public ActivityFragment() {
         // Required empty public constructor
@@ -78,9 +84,9 @@ public class ActivityFragment extends Fragment {
 
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_activity, container, false);
-
-        return root;
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_activity, container, false);
+        mBinding.recyclerView.setAdapter(new ActivityAdapter(new ArrayList<>()));
+        return mBinding.getRoot();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

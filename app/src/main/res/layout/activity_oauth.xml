@@ -14,7 +14,8 @@
   ~  See the License for the specific language governing permissions and
   ~  limitations under the License.
   -->
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data class="OAuthActivityBinding"/>
 
@@ -23,11 +24,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include layout="@layout/toolbar"/>
 
-        <WebView
-            android:id="@+id/auth_view"
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <WebView
+                android:id="@+id/auth_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 </layout>

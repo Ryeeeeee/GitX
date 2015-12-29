@@ -60,6 +60,7 @@ android {
         enabled = true
     }
 
+    // required by retrolambda
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

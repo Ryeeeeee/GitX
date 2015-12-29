@@ -14,40 +14,36 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.main;
+package com.ryeeeeee.gitx.module.main;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ryeeeeee.gitx.App;
 import com.ryeeeeee.gitx.R;
 import com.ryeeeeee.gitx.databinding.MainActivityBinding;
-import com.ryeeeeee.gitx.main.adapter.MainPagerAdapter;
-import com.ryeeeeee.gitx.oauth.OAuth;
-import com.ryeeeeee.gitx.oauth.OAuthActivity;
+import com.ryeeeeee.gitx.module.main.adapter.MainPagerAdapter;
+import com.ryeeeeee.gitx.module.activities.ActivityFragment;
+import com.ryeeeeee.gitx.module.oauth.OAuth;
+import com.ryeeeeee.gitx.module.oauth.OAuthActivity;
 import com.ryeeeeee.gitx.ui.base.BaseActivity;
-import com.ryeeeeee.gitx.user.UserDetailActivity;
+import com.ryeeeeee.gitx.module.user.UserDetailActivity;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, ActivityFragment.OnFragmentInteractionListener {

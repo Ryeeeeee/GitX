@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.oauth;
+package com.ryeeeeee.gitx.module.oauth;
 
 import com.google.gson.annotations.SerializedName;
 

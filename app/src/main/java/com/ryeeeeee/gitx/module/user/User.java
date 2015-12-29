@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.user;
+package com.ryeeeeee.gitx.module.user;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;

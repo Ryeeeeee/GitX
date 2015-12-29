@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.user;
+package com.ryeeeeee.gitx.module.user;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

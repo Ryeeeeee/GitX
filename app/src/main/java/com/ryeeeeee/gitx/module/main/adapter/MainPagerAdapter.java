@@ -14,13 +14,13 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.main.adapter;
+package com.ryeeeeee.gitx.module.main.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ryeeeeee.gitx.main.ActivityFragment;
+import com.ryeeeeee.gitx.module.activities.ActivityFragment;
 
 import java.util.ArrayList;
 import java.util.List;

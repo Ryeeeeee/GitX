@@ -14,10 +14,10 @@
  *  limitations under the License.
  */
 
-package com.ryeeeeee.gitx.user;
+package com.ryeeeeee.gitx.module.activities;
 
 /**
- * Created by Ryeeeeee on 12/28/15.
+ * Created by Ryeeeeee on 12/30/15.
  */
-public class UserEventHandler {
+public class UserActivity {
 }
