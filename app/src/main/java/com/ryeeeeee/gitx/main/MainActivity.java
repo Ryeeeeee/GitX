@@ -18,6 +18,9 @@ package com.ryeeeeee.gitx.main;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,10 +31,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -49,13 +54,8 @@ public class MainActivity extends BaseActivity
 
     private static final int OAUTH_REQUEST_CODE = 1;
 
-    Toolbar mToolbar;
-    TabLayout mTabLayout;
-    ViewPager mViewpager;
-    FloatingActionButton mFab;
-    NavigationView mNavView;
-    DrawerLayout mDrawerLayout;
     ImageView mAvatarView;
+    View mHeaderLayout;
 
     private MainActivityBinding mBinding;
 
@@ -77,6 +77,7 @@ public class MainActivity extends BaseActivity
                 startActivity(new Intent(MainActivity.this, UserDetailActivity.class));
             }
         });
+        updateUserInfo();
     }
 
     @Override public void onBackPressed() {
@@ -146,6 +147,7 @@ public class MainActivity extends BaseActivity
     private void onBindView() {
         View headerView = mBinding.navView.getHeaderView(0);
         mAvatarView = (ImageView) headerView.findViewById(R.id.avatar_view);
+        mHeaderLayout = headerView.findViewById(R.id.header_layout);
     }
 
     private void initToolbar() {
@@ -164,6 +166,15 @@ public class MainActivity extends BaseActivity
         viewpager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewpager);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
+    }
+
+    private void updateUserInfo() {
+        Bitmap bitmap = ((BitmapDrawable) mAvatarView.getDrawable()).getBitmap();
+        int defaultColor = getResources().getColor(R.color.colorPrimary);
+        Palette.from(bitmap).generate(palette -> {
+            int color = palette.getVibrantColor(defaultColor);
+            mHeaderLayout.setBackgroundColor(color);
+        });
     }
 
     @Override
