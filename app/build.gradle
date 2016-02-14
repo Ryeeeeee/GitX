@@ -20,7 +20,7 @@ Properties properties = new Properties();
 properties.load(new FileInputStream(file("signing.properties")));
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 22
     buildToolsVersion '23.0.2'
 
     signingConfigs {
@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         applicationId "com.ryeeeeee.gitx"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "0.1"

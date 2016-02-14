@@ -16,11 +16,26 @@
 
 package com.ryeeeeee.gitx.ui.base;
 
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+
+import android.support.v4.util.LruCache;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
+
 
 /**
  * Created by Ryeeeeee on 12/19/15.
  */
 public class BaseActivity extends AppCompatActivity {
+    Handler mHandler = new Handler();
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 }
